@@ -36,5 +36,20 @@ plt.show()
 #Simple Average
 train_data['count'].mean()
 
+# Defining predictions for validation
+valid_data['average_complete'] = train_data['count'].mean()
 
+plt.figure(figsize=(12,8))
+
+plt.plot(train_data.index, train_data['count'], label='train_data')
+plt.plot(valid_data.index,valid_data['count'], label='valid')
+plt.plot(valid_data.index,valid_data['average_complete'], label='Simple Average Forecast')
+plt.legend(loc='best')
+plt.title("Simple Average Method")
+plt.show()
+
+
+# calculating RMSE 
+rmse = sqrt(mean_squared_error(valid_data['count'], valid_data['average_complete']))
+print('The RMSE value for Simple Approach is', rmse)
 
