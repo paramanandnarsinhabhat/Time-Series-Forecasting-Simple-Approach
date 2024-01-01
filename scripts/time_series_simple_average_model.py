@@ -53,3 +53,21 @@ plt.show()
 rmse = sqrt(mean_squared_error(valid_data['count'], valid_data['average_complete']))
 print('The RMSE value for Simple Approach is', rmse)
 
+print(train_data.tail(7))
+temp = (train_data['count'][571:578]).values
+print('Lask week values are:', temp)
+print('Average for last week is', temp.mean())
+
+# Defining predictions for validation
+valid_data['average_lastweek'] = temp.mean()
+
+print(temp.mean())
+
+plt.figure(figsize=(12,8))
+
+plt.plot(train_data.index, train_data['count'], label='train_data')
+plt.plot(valid_data.index,valid_data['count'], label='valid')
+plt.plot(valid_data.index,valid_data['average_lastweek'], label='Week Average Forecast')
+plt.legend(loc='best')
+plt.title("Simple Average Method")
+plt.show()
