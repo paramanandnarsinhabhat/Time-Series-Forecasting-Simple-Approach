@@ -71,3 +71,7 @@ plt.plot(valid_data.index,valid_data['average_lastweek'], label='Week Average Fo
 plt.legend(loc='best')
 plt.title("Simple Average Method")
 plt.show()
+
+# calculating RMSE 
+rmse = sqrt(mean_squared_error(valid_data['count'], valid_data['average_lastweek']))
+print('The RMSE value for Simple Approach is', rmse)
